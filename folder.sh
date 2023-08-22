@@ -1,4 +1,0 @@
-
-dir=`pwd`
-
-nemo $dir
