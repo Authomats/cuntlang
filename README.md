@@ -1,0 +1,2 @@
+# cuntlang
+a programming language
