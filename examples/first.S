@@ -1,43 +1,59 @@
 
-      .global main
+# symbols allowing for external linkage
+.global main
+
+
+# cstd functions
+.extern printf
+
 
       .text
-main:
+
+# macros
+.macro      setup
       pushq       %rbp
       movq        %rsp, %rbp
-#
-      movsd       .float_five(%rip), %xmm0
-      callq       divByTwo
-      callq       printNumber
-#
+.endm
+
+
+.macro      return
       popq        %rbp
       ret
+.endm
 
 
+# c style main-function
+main:
+      setup
+      movsd       .float_five(%rip), %xmm0
+      cvtsd2si    %xmm0, %rax
+      pushq       %rax
+      callq       divByTwo
+      callq       printNumber
+      popq        %rax
+      cvtsi2sd    %rax, %xmm0
+      return
+
+
+# print double to stdout
 # number (f32) in xmm0
 printNumber:
-      pushq       %rbp
-      movq        %rsp, %rbp
-#
+      setup
+      subq        $8, %rsp
       leaq        .fmt_printNumber(%rip), %rdi
       movb        $1, %al
       callq       printf@plt
-#
-      popq        %rbp
-      ret
+      addq        $8, %rsp
+      return
 
 
+# divide double by two
 # number (f32) in xmm0
 divByTwo:
-      pushq       %rbp
-      movq        %rsp, %rbp
-#
+      setup
       movsd       .float_two(%rip), %xmm1
       divsd       %xmm1, %xmm0
-#
-      popq        %rbp
-      ret
-
+      return
 
 
       .data
