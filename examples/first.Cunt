@@ -1,0 +1,12 @@
+
+import std
+
+func divByTwo(number){
+      return number / 2.0;
+}
+
+func main() {
+      integer = 5;
+      std.printNumber(divByTwo(integer));
+      return 0;
+}
