@@ -1,0 +1,13 @@
+
+
+func name1(arg1, arg2){
+    dosth1;
+}
+
+func name2(arg1, arg2){
+    dosth2;
+}
+
+func name3(arg1, arg2){
+    dosth3;
+}
