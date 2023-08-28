@@ -7,8 +7,8 @@
 .extern printf
 
 
-      .text
 
+      .text
 # macros
 .macro      setup
       pushq       %rbp

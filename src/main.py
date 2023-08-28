@@ -1,7 +1,12 @@
 
-def main():
-      print("hello cunt!")
+
+# global
+import sys
+
+
+def main(argv):
+      print("hello cuntlang!")
 
 
 if __name__ == '__main__':
-      main()
+      main(sys.argv)

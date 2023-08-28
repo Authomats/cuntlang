@@ -1,7 +1,7 @@
 
 import std
 
-func divByTwo(number){
+func divByTwo(number) {
       return number / 2.0;
 }
 
