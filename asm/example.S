@@ -1,12 +1,12 @@
 
-      .global main
+      .global _main
 
       .text
-main:
+_main:
       push       %rax
       leaq       .msg(%rip), %rdi
       xorq       %rax, %rax
-      callq      printf@plt
+      callq      _printf
       pop        %rax
       ret
 

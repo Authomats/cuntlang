@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{algorithm, algpseudocode}
+
+\begin{document}
+
+
+
+
+\begin{algorithm}
+    \caption{isSingleton}\label{alg:isSingleton}
+    \textbf{Input:} \textit{list} $\in\mathsf{STRING}^N$, \textit{where} $\in\mathsf{STRING}$ (with $\ N\in\mathsf{N}_{\geq 0}$)\\
+    \textbf{Output:} \textit{bool} $\in\mathsf{BOOL}$
+    \begin{algorithmic}
+        \If{\textit{list} contains no dublications}
+            \State $\textit{bool} \gets \text{true}$
+        \Else
+            \State $\textit{bool} \gets \text{false}$
+            \State print("ERROR: name used more than once in " + \textit{where})
+        \EndIf
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+    \caption{parserLevelOne}\label{alg:parserLevelOne}
+    \textbf{Input:} \textit{file} with ending .Cunt\\
+    \textbf{Output:} \textit{func\textunderscore names}, \textit{func\textunderscore args}, \textit{func\textunderscore bodys}, \textit{is\textunderscore poss}
+    \begin{algorithmic}
+        \State $\textit{is\textunderscore poss} \gets \text{true}$
+        \State $N \gets \text{number of "func" in} \textit{file}$
+        \For{$i=1: N$}
+            \State $\textit{name} \gets \text{next\textunderscore word\textunderscore after\textunderscore func}$
+            \State $\textit{args} \gets \text{evythg\textunderscore in\textunderscore brc}$
+            \State $\textit{is\textunderscore poss} \gets \textit{is\textunderscore poss} * \text{isSingleton(\textit{args}, "the args of function " + \textit{name})}$
+            \State $\textit{body} \gets \text{evythg\textunderscore in\textunderscore cbrc}$
+            \State $\textit{func\textunderscore names} \gets \textit{name}$
+            \State $\textit{func\textunderscore args} \gets (\textit{name},\textit{args})$
+            \State $\textit{func\textunderscore bodys} \gets (\textit{name},\textit{body})$
+        \EndFor
+        \State $\textit{is\textunderscore poss} \gets \textit{is\textunderscore poss}*\text{isSingleton(\textit{args}, "naming functions")}$
+        \If{"main" is not in \textit{func\textunderscore names}}
+            \State $\textit{is\textunderscore poss} \gets \text{false}$
+            \State print("ERROR: no main to execute")
+        \EndIf
+    \end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}
+    \caption{parserLevelOne}\label{alg:parserLevelOne}
+    \textbf{Input:} \textit{file} with ending .Cunt\\
+    \textbf{Output:} \textit{function\textunderscore list}
+    \begin{algorithmic}
+        \State $\textit{is\textunderscore poss} \gets \text{true}$
+        \State $N \gets \text{number of "func" in} \textit{file}$
+        \For{$i=1: N$}
+            \State $\textit{name} \gets \text{next\textunderscore word\textunderscore after\textunderscore func}$
+            \State $\textit{args} \gets \text{evythg\textunderscore in\textunderscore brc}$
+            \State $\textit{is\textunderscore poss} \gets \textit{is\textunderscore poss} * \text{isSingleton(\textit{args}, "the args of function " + \textit{name})}$
+            \State $\textit{body} \gets \text{evythg\textunderscore in\textunderscore cbrc}$
+            \State $\textit{func\textunderscore names} \gets \textit{name}$
+            \State $\textit{func\textunderscore args} \gets (\textit{name},\textit{args})$
+            \State $\textit{func\textunderscore bodys} \gets (\textit{name},\textit{body})$
+        \EndFor
+        \State $\textit{is\textunderscore poss} \gets \textit{is\textunderscore poss}*\text{isSingleton(\textit{args}, "naming functions")}$
+        \If{"main" is not in \textit{func\textunderscore names}}
+            \State $\textit{is\textunderscore poss} \gets \text{false}$
+            \State print("ERROR: no main to execute")
+        \EndIf
+    \end{algorithmic}
+\end{algorithm}
+
+
+
+
+\end{document}
+
