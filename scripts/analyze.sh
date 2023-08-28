@@ -1,3 +1,3 @@
 
 cd ..
-cloc src examples scripts
+cloc src examples scripts folder.sh shell.sh

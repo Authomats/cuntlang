@@ -1,7 +1,8 @@
 
+# global
 import re
 import os
-#import pathlib
+import pathlib
 
 
 # linux -> macos
@@ -36,7 +37,9 @@ def name_to_macos(filepath):
       return filepath_new
 
 
-def generate_macos(filepath_linux):
+def generate_macos(filepath_linux : str):
+      if not pathlib.Path(filepath_linux).exists():
+            raise NameError("Error: invalid path to linux assembly-file!")
       filepath_new = name_to_macos(filepath_linux)
       #print(filepath_new)
       with open(filepath_linux, 'r') as f:
@@ -52,6 +55,7 @@ def generate_macos(filepath_linux):
       with open(filepath_new, "w") as f:
             f.write(filedata)
             #f.close()
+            print("successfully converted linux assembly file to macos!")
 
 
 # macos -> linux
@@ -73,7 +77,7 @@ def replace_underscore_fn_idiom(filedata):
             m_span = match_obj.span()
             cfn = filedata[m_span[0]:m_span[1]]
             cfn_new = " " + cfn[2: ] + "@plt"
-            print(cfn_new)
+            #print(cfn_new)
             filedata = re.sub(cfn, cfn_new, filedata, 1)
             replaced += 1
       return filedata
@@ -84,7 +88,9 @@ def name_to_linux(filepath):
       return filepath_new
 
 
-def generate_linux(filepath_macos):
+def generate_linux(filepath_macos : str):
+      if not pathlib.Path(filepath_macos).exists():
+            raise NameError("Error: invalid path to macos assembly-file!")
       filepath_new = name_to_linux(filepath_macos)
       #print(filepath_new)
       with open(filepath_macos, 'r') as f:
@@ -100,6 +106,7 @@ def generate_linux(filepath_macos):
       with open(filepath_new, "w") as f:
             f.write(filedata)
             #f.close()
+            print("successfully converted macos assembly file to linux!")
 
 
 # entry
