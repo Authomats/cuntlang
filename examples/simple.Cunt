@@ -1,0 +1,8 @@
+
+import printNumber
+
+function main() {
+      number = 5.0;
+      printNumber(number);
+      return 0;
+}
